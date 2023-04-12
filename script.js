@@ -6,22 +6,41 @@
 //-- tie = scissors = scissors , rock = rock , paper = paper
 
 //create array for computer random choice of [rock, paper, scissors]
- 
+ //-- https://www.programiz.com/javascript/examples/get-random-item
+
+//  function getComputerChoice(array) {
+
+//     // get random index value
+//     const randomIndex = Math.floor(Math.random() * array.length);
+
+//     // get random item
+//     const item = array[randomIndex];
+
+//     return item;
+// }
+
+// const array = ['Rock', 'Paper', 'Scissors'];
+
+// const result = getComputerChoice(array);
+// console.log(result);
+
+//Most recent version
 function getComputerChoice(array) {
 
     // get random index value
     const randomIndex = Math.floor(Math.random() * array.length);
 
     // get random item
-    const item = array[randomIndex];
+    const randomComputerChoiceitem = array[randomIndex];
 
-    return item;
+    return randomComputerChoiceitem;
 }
 
 const array = ['Rock', 'Paper', 'Scissors'];
 
-const result = getRandomItem(array);
+const result = getComputerChoice(array);
 console.log(result);
+
 
 //input ability - create for player
 
@@ -64,3 +83,39 @@ console.log(result);
 
 
 //base case - player inputand computer submit choices and it is evaluated and an outcome is returned
+//----------------------------------------------------------------------------
+
+
+
+//----------------------------------------------------------------------------
+
+
+  function playRound(playerSelection, computerSelection) {
+    // Make the playerSelection lowercase for comparison
+    playerSelection = playerSelection.toLowerCase();
+    
+    // Declare possible outcomes as objects
+    const outcomes = {
+      rock: {win: "scissors", lose: "paper"},
+      paper: {win: "rock", lose: "scissors"},
+      scissors: {win: "paper", lose: "rock"}
+    };
+    
+    // Check if player and computer selections are the same
+    if (playerSelection === computerSelection) {
+      return "It's a tie!";
+    }
+    
+    // Check if player wins
+    if (outcomes[playerSelection].win === computerSelection) {
+      return `You Win! ${playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`;
+    }
+    
+    // Player loses by default
+    return `You Lose! ${computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}`;
+  }
+
+console.log(playRound("rock", "scissors")); // "You Win! Rock beats scissors"
+console.log(playRound("PAPER", "rock")); // "You Win! Paper beats rock"
+console.log(playRound("ScIsSoRs", "scissors")); // "It's a tie!"
+console.log(playRound("rock", "paper")); // "You Lose! Paper beats rock"
