@@ -7,10 +7,12 @@
 
 //create array for computer random choice of [rock, paper, scissors]
  //-- https://www.programiz.com/javascript/examples/get-random-item
+ //-- updated array values, renamed arr to array, and updated const name that is returned 
 function getComputerChoice(array) {
 
     // get random index value
     const randomIndex = Math.floor(Math.random() * array.length);
+    array.length = 3;
 
     // get random item
     const randomComputerChoiceitem = array[randomIndex];
@@ -18,7 +20,7 @@ function getComputerChoice(array) {
     return randomComputerChoiceitem;
 }
 
-const array = ['Rock', 'Paper', 'Scissors'];
+const array = ['rock', 'paper', 'scissors'];
 
 const result = getComputerChoice(array);
 console.log(result);
@@ -63,3 +65,92 @@ console.log(result);
 
 
 //base case - player inputand computer submit choices and it is evaluated and an outcome is returned
+
+
+
+  function playRound(playerChoice, computerChoice) {
+    // Make the playerSelection lowercase for comparison
+    playerChoice = playerChoice.toLowerCase();
+    
+    // Declare possible outcomes as objects
+    const outcomes = {
+      rock: {win: "scissors", lose: "paper"},
+      paper: {win: "rock", lose: "scissors"},
+      scissors: {win: "paper", lose: "rock"}
+    };
+    
+    // Check if player and computer selections are the same
+    if (playerChoice === computerChoice) {
+      return "It's a tie!";
+    }
+    
+    // Check if player wins
+    if (outcomes[playerChoice].win === computerChoice) {
+      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice}`;
+    }
+    
+    // Player loses by default
+    return `You Lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice}`;
+  }
+  
+  // Example usage:
+  const playerChoice = "rock";
+  const computerChoice = getComputerChoice(array);
+  console.log(playRound(playerChoice, computerChoice)); // Outputs "You Lose! Paper beats rock" or similar depending on choice
+
+
+
+------------------------------------------------------------------------------------------------------------------
+
+//working console testing code
+
+function getComputerChoice(array) {
+
+    // get random index value
+    const randomIndex = Math.floor(Math.random() * array.length);
+    array.length = 3;
+
+    // get random item
+    const randomComputerChoiceitem = array[randomIndex];
+
+    return randomComputerChoiceitem;
+}
+
+const array = ['rock', 'paper', 'scissors'];
+
+const result = getComputerChoice(array);
+console.log(result);
+
+
+function playRound(playerChoice, computerChoice) {
+    // Make the playerSelection lowercase for comparison
+    playerChoice = playerChoice.toLowerCase();
+    
+    // Declare possible outcomes as objects
+    const outcomes = {
+      rock: {win: "scissors", lose: "paper"},
+      paper: {win: "rock", lose: "scissors"},
+      scissors: {win: "paper", lose: "rock"}
+    };
+    
+    // Check if player and computer selections are the same
+    if (playerChoice === computerChoice) {
+      return "It's a tie!";
+    }
+    
+    // Check if player wins
+    if (outcomes[playerChoice].win === computerChoice) {
+      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice}`;
+    }
+    
+    // Player loses by default
+    return `You Lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice}`;
+  }
+  
+  // Example usage:
+  const playerChoice = "rock";
+  const computerChoice = result;
+  console.log(playRound(playerChoice, computerChoice)); 
+
+
+  
