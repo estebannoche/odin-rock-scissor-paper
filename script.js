@@ -8,22 +8,22 @@
 //create array for computer random choice of [rock, paper, scissors]
  //-- https://www.programiz.com/javascript/examples/get-random-item
  //-- updated array values, renamed arr to array, and updated const name that is returned 
-function getComputerChoice(array) {
+// function getComputerChoice(array) {
 
-    // get random index value
-    const randomIndex = Math.floor(Math.random() * array.length);
-    array.length = 3;
+//     // get random index value
+//     const randomIndex = Math.floor(Math.random() * array.length);
+//     array.length = 3;
 
-    // get random item
-    const randomComputerChoiceitem = array[randomIndex];
+//     // get random item
+//     const randomComputerChoiceitem = array[randomIndex];
 
-    return randomComputerChoiceitem;
-}
+//     return randomComputerChoiceitem;
+// }
 
-const array = ['rock', 'paper', 'scissors'];
+// const array = ['rock', 'paper', 'scissors'];
 
-const result = getComputerChoice(array);
-console.log(result);
+// const result = getComputerChoice(array);
+// console.log(result);
 
 
 //input ability - create for player
@@ -66,43 +66,41 @@ console.log(result);
 
 //base case - player inputand computer submit choices and it is evaluated and an outcome is returned
 
-
-
-  function playRound(playerChoice, computerChoice) {
-    // Make the playerSelection lowercase for comparison
-    playerChoice = playerChoice.toLowerCase();
-    
-    // Declare possible outcomes as objects
-    const outcomes = {
-      rock: {win: "scissors", lose: "paper"},
-      paper: {win: "rock", lose: "scissors"},
-      scissors: {win: "paper", lose: "rock"}
-    };
-    
-    // Check if player and computer selections are the same
-    if (playerChoice === computerChoice) {
-      return "It's a tie!";
-    }
-    
-    // Check if player wins
-    if (outcomes[playerChoice].win === computerChoice) {
-      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice}`;
-    }
-    
-    // Player loses by default
-    return `You Lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice}`;
-  }
-  
-  // Example usage:
-  const playerChoice = "rock";
-  const computerChoice = getComputerChoice(array);
-  console.log(playRound(playerChoice, computerChoice)); // Outputs "You Lose! Paper beats rock" or similar depending on choice
-
-
-
-------------------------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------------------------------------
 
 //working console testing code
+
+//&&&&&&&&&&&&&&&&&&&&& COMPUTER INPUT &&&&&&&&&&&&&&&&&&&&&&
+
+//WORKING
+
+// &&&&&&&&&&&&&&&&&&&&& PLAYER INPUT &&&&&&&&&&&&&&&&&&&&&&
+
+// function logInput(inputValue) {
+//     console.log(inputValue);
+//     alert("you ran  logInput")
+//      }
+ 
+ 
+
+
+ function evaluateInput(){
+ const playerChoice = document.getElementById("myInput").value;
+//  logInput(playerChoice);
+ console.log(playerChoice);
+ // do other evaluation logic here
+ const gameResult = playRound(playerChoice) //gameresult is the outcome of playround
+ console.log(gameResult)
+
+} 
+//what is actually happening
+// const gameResult = null;
+// const resultOfPlayRound = playRound(playerChoice)
+// gameResult = resultOfPlayRound;
+
+
+
+
 
 function getComputerChoice(array) {
 
@@ -116,16 +114,37 @@ function getComputerChoice(array) {
     return randomComputerChoiceitem;
 }
 
-const array = ['rock', 'paper', 'scissors'];
+// const array = ['rock', 'paper', 'scissors'];
 
-const result = getComputerChoice(array);
-console.log(result);
+// const computerChoiceResult = getComputerChoice(array);
+// console.log(computerChoiceResult);
 
 
-function playRound(playerChoice, computerChoice) {
+
+//&&&&&&&&&&&&&&&&&&&&& PLAYER INPUT &&&&&&&&&&&&&&&&&&&&&&
+// function logInput(inputValue) {
+//    console.log(inputValue);
+//     }
+
+
+// function evaluateInput(){
+// var inputValue = document.getElementById("myInput").value;
+// logInput(inputValue);
+// //console.log(inputValue);
+// // do other evaluation logic here
+// }
+
+
+
+
+//&&&&&&&&&&&&&&&&&&& PLAY ROUND &&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+function playRound(playerChoice) {
     // Make the playerSelection lowercase for comparison
     playerChoice = playerChoice.toLowerCase();
-    
+    const array = ['rock', 'paper', 'scissors'];
+    const computerChoiceResult = getComputerChoice(array);
+    console.log('computerchoiceresult',computerChoiceResult);
     // Declare possible outcomes as objects
     const outcomes = {
       rock: {win: "scissors", lose: "paper"},
@@ -134,23 +153,36 @@ function playRound(playerChoice, computerChoice) {
     };
     
     // Check if player and computer selections are the same
-    if (playerChoice === computerChoice) {
+    if (playerChoice === computerChoiceResult) {
       return "It's a tie!";
     }
-    
+ console.log("after tie evaluation")   
     // Check if player wins
-    if (outcomes[playerChoice].win === computerChoice) {
-      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoice}`;
+    if (outcomes[playerChoice].win === computerChoiceResult) {
+      return `You Win! ${playerChoice.charAt(0).toUpperCase() + playerChoice.slice(1)} beats ${computerChoiceResult}`;
     }
-    
+    console.log("after win evaluation")   
+   
     // Player loses by default
-    return `You Lose! ${computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1)} beats ${playerChoice}`;
+    return `You Lose! ${computerChoiceResult.charAt(0).toUpperCase() + computerChoiceResult.slice(1)} beats ${playerChoice}`;
   }
-  
+
   // Example usage:
-  const playerChoice = "rock";
-  const computerChoice = result;
-  console.log(playRound(playerChoice, computerChoice)); 
+    // const playerChoice = "rock";
+    // const computerChoice = computerChoiceResult;
+    // console.log(playRound(playerChoice, computerChoice)); 
 
 
-  
+//WORKING
+
+
+
+
+
+//&&&&&& in - flight &&&&&&&
+
+
+//alert("blah")
+
+
+//&&&&&& in - flight &&&&&&&
